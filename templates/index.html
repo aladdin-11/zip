@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Early Cancer Detection Through AI</h1>
+        <p>Advanced prediction of breast and lung cancer using gene expression patterns and clinical biomarkers</p>
+        <a href="{{ url_for('predict') }}" class="btn">Get Started</a>
+    </div>
+</section>
+
+<div class="container" style="padding: 60px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <div class="card">
+            <i class="fas fa-microscope" style="font-size: 40px; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 style="font-size: 22px; margin-bottom: 15px;">How It Works</h2>
+            <p style="color: var(--gray);">Our AI analyzes 15 key biomarkers including gene expressions and clinical factors to generate accurate predictions.</p>
+            <a href="{{ url_for('about') }}" style="display: inline-block; margin-top: 20px; color: var(--primary); font-weight: 500;">
+                Learn more <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="card">
+            <i class="fas fa-chart-line" style="font-size: 40px; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 style="font-size: 22px; margin-bottom: 15px;">Why Use Our Tool</h2>
+            <p style="color: var(--gray);">Get instant predictions with confidence percentages and track your historical results.</p>
+            <a href="{{ url_for('signup') }}" style="display: inline-block; margin-top: 20px; color: var(--primary); font-weight: 500;">
+                Create account <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="card">
+            <i class="fas fa-clipboard-check" style="font-size: 40px; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 style="font-size: 22px; margin-bottom: 15px;">Clinical Accuracy</h2>
+            <p style="color: var(--gray);">Validated against thousands of clinical cases with 94%+ accuracy in testing.</p>
+            <a href="{{ url_for('contact') }}" style="display: inline-block; margin-top: 20px; color: var(--primary); font-weight: 500;">
+                Contact researchers <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

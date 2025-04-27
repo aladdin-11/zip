@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="padding: 60px 0;">
+    <div class="hero" style="padding: 40px 0; background: none;">
+        <h1 style="font-size: 36px; margin-bottom: 15px;">Cancer Prediction</h1>
+        <p style="color: var(--gray); font-size: 18px;">Submit gene expression and clinical data for analysis</p>
+    </div>
+
+    <div class="card">
+        <form method="POST" action="{{ url_for('predict') }}">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Column 1 -->
+                <div>
+                    {% for field in [
+                        ('PIK3CA_expr', 'Gene expression value', 'number', 'any', '1.22', '100.18'),
+                        ('Pat_STK11_mutation', '0 (no) or 1 (yes)', 'number', '1', '0', '1'),
+                        ('HER2_expr', 'Gene expression value', 'number', 'any', '-1.5', '105.8'),
+                        ('BRCA1_expr', 'Gene expression value', 'number', 'any', '-12.96', '108.4'),
+                        ('KRAS_expr', 'Gene expression value', 'number', 'any', '-19.84', '107.63'),
+                        ('EGFR_expr', 'Gene expression value', 'number', 'any', '-7.92', '109.22'),
+                        ('TP53_expr', 'Gene expression value', 'number', 'any', '-4.86', '113.51')
+                    ] %}
+                    <div class="form-group">
+                        <label>{{ field[0].replace('_', ' ') }}</label>
+                        <input type="{{ field[2] }}"
+                               class="form-control"
+                               step="{{ field[3] }}"
+                               min="{{ field[4] }}" max="{{ field[5] }}"
+                               name="{{ field[0] }}"
+                               placeholder="{{ field[1] }}"
+                               required>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Column 2 -->
+                <div>
+                    {% for field in [
+                        ('Pat_KRAS_mutation', '0 (no) or 1 (yes)', 'number', '1', '0', '1'),
+                        ('Pat_TP53_mutation', '0 (no) or 1 (yes)', 'number', '1', '0', '1'),
+                        ('age', 'Patient age (0–120)', 'number', '1', '0', '105'),
+                        ('Pat_Packs_Per_Year', 'Numeric value', 'number', 'any', '0', '154'),
+                        ('Pat_Smoking_Status', '0–4 scale', 'number', '1', '0', '4'),
+                        ('Pat_EGFR_mutation', '0 (no) or 1 (yes)', 'number', '1', '0', '1'),
+                        ('Pat_ALK_translocation', '0 (no) or 1 (yes)', 'number', '1', '0', '1'),
+                        ('CDH1_expr', 'Gene expression value', 'number', 'any', '5.66', '91.02')
+                    ] %}
+                    <div class="form-group">
+                        <label>{{ field[0].replace('_', ' ') }}</label>
+                        <input type="{{ field[2] }}"
+                               class="form-control"
+                               step="{{ field[3] }}"
+                               min="{{ field[4] }}" max="{{ field[5] }}"
+                               name="{{ field[0] }}"
+                               placeholder="{{ field[1] }}"
+                               required>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button type="submit" class="btn">
+                    <i class="fas fa-chart-pie"></i> Analyze Data
+                </button>
+            </div>
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="card" style="background: linear-gradient(135deg, rgba(78, 84, 200, 0.1), rgba(106, 48, 147, 0.1)); border-left: 4px solid var(--primary);">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary);">
+            <i class="fas fa-clipboard-list"></i> Prediction Result
+        </h3>
+        <p style="font-size: 18px; font-weight: 500; margin-bottom: 10px;">{{ result }}</p>
+        <p style="color: var(--gray);">
+            <i class="fas fa-percentage"></i> Confidence: {{ confidence }}%
+        </p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

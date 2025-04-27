@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>About Our Technology</h1>
+        <p>Understanding how our AI model analyzes your data</p>
+    </div>
+</section>
+
+<div class="container" style="padding: 60px 0;">
+    <div class="card">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--dark);">
+            <i class="fas fa-cogs"></i> Our Methodology
+        </h2>
+        <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.7;">
+            The CancerAI Predictor uses machine learning algorithms trained on thousands of clinical cases to identify patterns in gene expression data and clinical markers that correlate with cancer development.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0;">
+            <div class="card" style="background: var(--light);">
+                <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary);">
+                    <i class="fas fa-dna"></i> Key Biomarkers
+                </h3>
+                <ul style="color: var(--gray); padding-left: 20px;">
+                    <li style="margin-bottom: 8px;">PIK3CA expression</li>
+                    <li style="margin-bottom: 8px;">HER2 expression</li>
+                    <li style="margin-bottom: 8px;">TP53 mutations</li>
+                    <li style="margin-bottom: 8px;">KRAS mutations</li>
+                    <li>EGFR expression</li>
+                </ul>
+            </div>
+            <div class="card" style="background: var(--light);">
+                <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary);">
+                    <i class="fas fa-user-md"></i> Clinical Factors
+                </h3>
+                <ul style="color: var(--gray); padding-left: 20px;">
+                    <li style="margin-bottom: 8px;">Age</li>
+                    <li style="margin-bottom: 8px;">Smoking status</li>
+                    <li style="margin-bottom: 8px;">Pack years</li>
+                    <li>Family history</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card" style="background: rgba(247, 87, 140, 0.1); border-left: 4px solid var(--accent);">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">
+                <i class="fas fa-exclamation-triangle"></i> Important Disclaimer
+            </h3>
+            <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
+                This tool is for research purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

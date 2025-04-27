@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="padding: 60px 0; text-align: center;">
+    <h1 style="font-size: 36px; margin-bottom: 15px;">Welcome, {{ session['user'] }}!</h1>
+    <p style="color: var(--gray); font-size: 18px; margin-bottom: 40px;">Access your cancer prediction tools and history below.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+        <div class="card">
+            <i class="fas fa-chart-bar" style="font-size: 40px; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 style="font-size: 22px; margin-bottom: 15px;">Predict</h2>
+            <p style="color: var(--gray); font-size: 15px; margin-bottom: 20px;">Submit your gene and clinical data for a prediction.</p>
+            <a href="{{ url_for('predict') }}" class="btn">
+                <i class="fas fa-arrow-right"></i> Go to Predict
+            </a>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-history" style="font-size: 40px; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 style="font-size: 22px; margin-bottom: 15px;">History</h2>
+            <p style="color: var(--gray); font-size: 15px; margin-bottom: 20px;">View your past predictions and inputs.</p>
+            <a href="{{ url_for('history') }}" class="btn">
+                <i class="fas fa-arrow-right"></i> View History
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

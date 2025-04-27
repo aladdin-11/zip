@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Prediction History</h1>
+        <p>Review your previous analysis results</p>
+    </div>
+</section>
+
+<div class="container" style="padding: 60px 0;">
+    <div class="card">
+        {% if predictions %}
+        <div style="overflow-x: auto;">
+            <table style="width: 100%;">
+                <thead>
+                    <tr style="background: var(--light);">
+                        <th style="padding: 15px; text-align: left;">Date</th>
+                        <th style="padding: 15px; text-align: left;">Type</th>
+                        <th style="padding: 15px; text-align: left;">Confidence</th>
+                        <th style="padding: 15px; text-align: left;">Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in predictions %}
+                    <tr style="border-bottom: 1px solid var(--light);">
+                        <td style="padding: 15px;">{{ item.timestamp }}</td>
+                        <td style="padding: 15px;">{{ item.cancer_type }}</td>
+                        <td style="padding: 15px;">{{ item.confidence }}%</td>
+                        <td style="padding: 15px;">{{ item.result }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div style="text-align: center; padding: 40px 20px;">
+            <i class="fas fa-inbox" style="font-size: 50px; color: var(--gray); margin-bottom: 20px;"></i>
+            <p style="color: var(--gray); margin-bottom: 30px; font-size: 18px;">No prediction history yet</p>
+            <a href="{{ url_for('predict') }}" class="btn">
+                <i class="fas fa-plus"></i> Make First Prediction
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

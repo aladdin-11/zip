@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Contact Our Team</h1>
+        <p>Have questions about our prediction tool?</p>
+    </div>
+</section>
+
+<div class="container" style="padding: 60px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <div class="card">
+            <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--dark);">
+                <i class="fas fa-envelope"></i> Send Us a Message
+            </h2>
+            <form method="POST" action="{{ url_for('contact') }}">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" class="form-control" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </div>
+        
+        <div>
+            <div class="card" style="margin-bottom: 30px;">
+                <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--dark);">
+                    <i class="fas fa-address-card"></i> Contact Information
+                </h2>
+                <p style="color: var(--gray); margin-bottom: 15px; line-height: 1.8;">
+                    <strong><i class="fas fa-envelope"></i> Email:</strong> research@cancerpredictor.ai<br>
+                    <strong><i class="fas fa-phone"></i> Phone:</strong> (555) 123-4567
+                </p>
+                <p style="color: var(--gray); line-height: 1.8;">
+                    Our research team typically responds within 24-48 hours to all inquiries.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--dark);">
+                    <i class="fas fa-life-ring"></i> Technical Support
+                </h2>
+                <p style="color: var(--gray); margin-bottom: 20px; line-height: 1.8;">
+                    For immediate assistance with technical issues, please include your user ID in all communications.
+                </p>
+                <a href="#" class="btn" style="display: inline-block;">
+                    <i class="fas fa-question-circle"></i> Help Center
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
